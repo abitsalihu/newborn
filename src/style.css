@@ -1,0 +1,18 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: 0;
+}
+
+body,
+html {
+  overflow: hidden;
+}
+
+.web-gl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}

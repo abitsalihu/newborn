@@ -1,0 +1,35 @@
+{
+  "devDependencies": {
+    "gsap": "^3.11.5",
+    "lil-gui": "^0.18.1",
+    "three": "^0.152.2",
+    "vite": "^4.3.3"
+  },
+  "name": "newborn",
+  "version": "1.0.0",
+  "description": "newborn cafe",
+  "main": "vite.config.js",
+  "dependencies": {
+    "esbuild": "^0.17.18",
+    "nanoid": "^3.3.6",
+    "fsevents": "^2.3.2",
+    "picocolors": "^1.0.0",
+    "postcss": "^8.4.23",
+    "rollup": "^3.21.2",
+    "source-map-js": "^1.0.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abitsalihu/newborn.git"
+  },
+  "author": "abi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abitsalihu/newborn/issues"
+  },
+  "homepage": "https://github.com/abitsalihu/newborn#readme"
+}

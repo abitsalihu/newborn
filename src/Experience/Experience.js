@@ -6,6 +6,7 @@ import Camera from "./Camera";
 import Renderer from "./Renderer";
 import source from "./source";
 import Resources from "./Utils/Resources";
+import World from "./World";
 let instance = null;
 
 export default class Experience {
@@ -32,6 +33,7 @@ export default class Experience {
     this.scene = new THREE.Scene();
     this.camera = new Camera();
     this.renderer = new Renderer();
+    this.world = new World();
 
     this.size.on("resize", () => {
       this.resize();
@@ -47,7 +49,10 @@ export default class Experience {
     this.renderer.resize();
   }
   update() {
+    this.debug.stats.begin();
+
     this.camera.update();
     this.renderer.update();
+    this.debug.stats.end();
   }
 }

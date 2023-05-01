@@ -23,10 +23,8 @@ export default class Resources extends EventEmitter {
   }
 
   startLoading() {
-    console.log("startLoading");
     for (let source of this.source) {
       if (source.type === "cubeTextureLoader") {
-        console.log(this.source);
         this.cubeTextureLoader.load(source.path, (file) => {
           this.addItems(source, file);
         });
@@ -50,7 +48,6 @@ export default class Resources extends EventEmitter {
 
     if (this.itemsLoaded === this.itemsToLoad) {
       this.trigger("resourcesReady");
-      console.log("resourcesReady");
     }
   }
 }

@@ -1,28 +1,8 @@
 {
-  "devDependencies": {
-    "gsap": "^3.11.5",
-    "lil-gui": "^0.18.1",
-    "three": "^0.152.2",
-    "vite": "^4.3.3"
-  },
-  "name": "newborn",
+  "name": "newbornbrew",
   "version": "1.0.0",
-  "description": "newborn cafe",
+  "description": "",
   "main": "vite.config.js",
-  "engines": {
-    "node": "16.x"
-  },
-  "dependencies": {
-    "esbuild": "^0.17.18",
-    "fsevents": "^2.3.2",
-    "nanoid": "^3.3.6",
-    "picocolors": "^1.0.0",
-    "postcss": "^8.4.23",
-    "rollup": "^3.21.2",
-    "source-map-js": "^1.0.2",
-    "stats.js": "^0.17.0",
-    "vercel": "^29.3.0"
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -37,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/abitsalihu/newborn/issues"
   },
-  "homepage": "https://github.com/abitsalihu/newborn#readme"
+  "homepage": "https://github.com/abitsalihu/newborn#readme",
+  "dependencies": {
+    "gsap": "^3.11.5",
+    "lil-gui": "^0.18.1",
+    "stats": "^1.0.0",
+    "stats.js": "^0.17.0",
+    "three": "^0.152.2",
+    "vercel": "^29.3.0",
+    "vite": "^4.3.5"
+  }
 }

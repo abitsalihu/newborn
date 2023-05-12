@@ -85,7 +85,6 @@ export default class HTML {
           if (this.size.width < 768) {
             this.newBorn.scene.scale.set(0.7, 0.7, 0.7);
           }
-          this.camera.position.y = 5;
         },
       };
 

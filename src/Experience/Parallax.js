@@ -27,17 +27,17 @@ export default class Parallax {
   }
 
   update() {
-    if (this.size.width > 778) {
-      this.parallaxX = this.cursor.x;
-      this.parallaxY = -this.cursor.y;
-      this.cameraGroup.position.x +=
-        (this.parallaxX - this.cameraGroup.position.x) *
-        0.005 *
-        this.time.delta;
-      this.cameraGroup.position.y +=
-        (this.parallaxY - this.cameraGroup.position.y) *
-        0.005 *
-        this.time.delta;
-    }
+    // if (this.size.width > 778) {
+    //   this.parallaxX = this.cursor.x;
+    //   this.parallaxY = -this.cursor.y;
+    //   this.cameraGroup.position.x +=
+    //     (this.parallaxX - this.cameraGroup.position.x) *
+    //     0.005 *
+    //     this.time.delta;
+    //   this.cameraGroup.position.y +=
+    //     (this.parallaxY - this.cameraGroup.position.y) *
+    //     0.005 *
+    //     this.time.delta;
+    // }
   }
 }

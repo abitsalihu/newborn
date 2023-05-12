@@ -11,4 +11,10 @@ export default [
       "/textures/environmentMaps/0/nz.jpg",
     ],
   },
+
+  {
+    name: "newBorn",
+    type: "gltfLoader",
+    path: "/models/134kVerts.glb",
+  },
 ];

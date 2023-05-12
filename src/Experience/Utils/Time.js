@@ -4,7 +4,11 @@ export default class Time extends EventEmitter {
   constructor() {
     super();
 
-    this.time = new Date();
+    //? setup
+    this.start = Date.now();
+    this.current = this.start;
+    this.elapsed = 0;
+    this.delta = 0.16;
 
     window.requestAnimationFrame(() => {
       this.tick();
@@ -13,6 +17,11 @@ export default class Time extends EventEmitter {
 
   tick() {
     this.trigger("update");
+
+    const currentTime = Date.now();
+    this.delta = currentTime - this.current;
+    this.current = currentTime;
+    this.elapsed = this.current - this.start;
 
     window.requestAnimationFrame(() => {
       this.tick();

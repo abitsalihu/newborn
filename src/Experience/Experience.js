@@ -7,6 +7,8 @@ import Renderer from "./Renderer";
 import source from "./source";
 import Resources from "./Utils/Resources";
 import World from "./World";
+import Parallax from "./Parallax";
+import HTML from "./Html";
 let instance = null;
 
 export default class Experience {
@@ -33,7 +35,9 @@ export default class Experience {
     this.scene = new THREE.Scene();
     this.camera = new Camera();
     this.renderer = new Renderer();
+    this.parallax = new Parallax();
     this.world = new World();
+    this.html = new HTML();
 
     this.size.on("resize", () => {
       this.resize();
@@ -53,6 +57,9 @@ export default class Experience {
 
     this.camera.update();
     this.renderer.update();
+    this.world.update();
+    this.parallax.update();
     this.debug.stats.end();
+    this.html.update();
   }
 }

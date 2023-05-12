@@ -29,14 +29,16 @@ export default class Resources extends EventEmitter {
           this.addItems(source, file);
         });
       }
-      if (source.type === "gltfLoader") {
-        this.gltfLoader.load(source, (file) => {
-          console.log(file);
+
+      if (source.type === "textureLoader") {
+        this.textureLoader.load(source.path, (file) => {
+          this.addItems(source, file);
         });
       }
-      if (source.type === "textureLoader") {
-        this.textureLoader.load(source, (file) => {
-          console.log(file);
+
+      if (source.type === "gltfLoader") {
+        this.gltfLoader.load(source.path, (file) => {
+          this.addItems(source, file);
         });
       }
     }

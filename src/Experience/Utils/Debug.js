@@ -7,7 +7,7 @@ export default class Debug {
     this.stats = new Stats();
 
     if (window.location.hash === "#debug") {
-      const gui = new lil.GUI();
+      this.gui = new lil.GUI();
       this.active = true;
 
       document.body.appendChild(this.stats.dom);

@@ -17,7 +17,8 @@
     "postcss": "^8.4.23",
     "rollup": "^3.21.2",
     "source-map-js": "^1.0.2",
-    "stats.js": "^0.17.0"
+    "stats.js": "^0.17.0",
+    "vercel": "^29.3.0"
   },
   "scripts": {
     "dev": "vite",

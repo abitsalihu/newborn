@@ -9,6 +9,9 @@
   "version": "1.0.0",
   "description": "newborn cafe",
   "main": "vite.config.js",
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "esbuild": "^0.17.18",
     "fsevents": "^2.3.2",

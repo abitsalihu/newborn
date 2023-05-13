@@ -86,14 +86,14 @@ export default class HTML {
 
           this.controls = new OrbitControls(this.camera.instance, this.canvas);
           this.controls.enableDamping = true;
-          // this.controls.target = this.newBorn.scene.position;
+          this.controls.target = this.newBorn.scene.position;
           // this.newBorn.scene.rotation.y = Math.PI * 0.5;
 
           this.orbitControlsDisabled = false;
-          // this.newBorn.scene.scale.set(1, 1, 1);
-          // if (this.size.width < 768) {
-          //   this.newBorn.scene.scale.set(0.7, 0.7, 0.7);
-          // }
+          this.newBorn.scene.scale.set(1, 1, 1);
+          if (this.size.width < 768) {
+            this.newBorn.scene.scale.set(0.7, 0.7, 0.7);
+          }
         },
       };
 

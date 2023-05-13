@@ -11,11 +11,7 @@ export default [
       "/textures/environmentMaps/0/nz.jpg",
     ],
   },
-  {
-    name: "bakedTexture",
-    type: "textureLoader",
-    path: "./textures/textureBaked.jpg",
-  },
+
   {
     name: "newBorn",
     type: "gltfLoader",

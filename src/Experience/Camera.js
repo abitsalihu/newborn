@@ -7,7 +7,6 @@ export default class Camera {
     this.experience = new Experience();
 
     this.debug = this.experience.debug;
-    // console.log(this.debug);
 
     this.canvas = this.experience.canvas;
     this.scene = this.experience.scene;
@@ -20,11 +19,6 @@ export default class Camera {
 
     if (this.debug.active) {
       this.debugActive();
-    }
-
-    //? if device smaller than 778px
-    if (this.size.width < 778) {
-      // this.setOrbitControls();
     }
   }
 
@@ -45,10 +39,10 @@ export default class Camera {
     console.log(this.instance.position);
   }
 
-  setOrbitControls() {
-    this.controls = new OrbitControls(this.instance, this.canvas);
-    this.controls.enableDamping = true;
-  }
+  // setOrbitControls() {
+  //   this.controls = new OrbitControls(this.instance, this.canvas);
+  //   // this.controls.enableDamping = true;
+  // }
 
   resize() {
     this.instance.aspect = this.size.width / this.size.height;

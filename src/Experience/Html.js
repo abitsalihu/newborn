@@ -1,11 +1,16 @@
 import Experience from "./Experience";
 import gsap from "gsap";
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 export default class HTML {
   constructor() {
     this.experience = new Experience();
+    this.canvas = this.experience.canvas;
     this.btnCon = document.querySelector(".btn-con");
     this.bg = document.querySelector(".bg");
+    this.orbitControlsDisabled = false;
+
     //? ADD BG ANIMATION
     this.bgContent = `  <div class="title">
         <h1>NewBorn</h1>
@@ -78,13 +83,17 @@ export default class HTML {
       this.orbitControlsParams = {
         func: () => {
           this.orbitControlsEnabled = true;
-          this.camera.setOrbitControls();
-          this.camera.controls.target = this.newBorn.scene.position;
+
+          this.controls = new OrbitControls(this.camera.instance, this.canvas);
+          this.controls.enableDamping = true;
+          // this.controls.target = this.newBorn.scene.position;
+          // this.newBorn.scene.rotation.y = Math.PI * 0.5;
+
           this.orbitControlsDisabled = false;
-          this.newBorn.scene.scale.set(1.2, 1.2, 1.2);
-          if (this.size.width < 768) {
-            this.newBorn.scene.scale.set(0.7, 0.7, 0.7);
-          }
+          // this.newBorn.scene.scale.set(1, 1, 1);
+          // if (this.size.width < 768) {
+          //   this.newBorn.scene.scale.set(0.7, 0.7, 0.7);
+          // }
         },
       };
 
@@ -158,7 +167,7 @@ export default class HTML {
           if (this.orbitControlsEnabled) {
             this.btnCon.style.display = "none";
             this.orbitControlsEnabled = false;
-            this.camera.controls.enabled = false;
+            this.controls.enabled = false;
             this.orbitControlsDisabled = true;
             window.location.reload();
           }
@@ -176,7 +185,8 @@ export default class HTML {
 
   update() {
     if (this.orbitControlsEnabled) {
-      this.camera.controls.update();
+      this.controls.update();
+      console.log("active");
     }
   }
 }

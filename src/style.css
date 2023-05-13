@@ -45,16 +45,12 @@ html {
   font-size: 4rem;
   transform: translateY(-4px);
   border: 1px solid #000000;
-  /* opacity: 0; */
-
-  animation: titleA 2s ease forwards;
 }
 
 .title h2 {
   color: #ffd95a;
   font-family: "Pacifico", cursive;
   font-size: 3.5rem;
-  animation: titleB 2s ease forwards;
 }
 
 .load-con {
@@ -163,7 +159,7 @@ html {
   }
 }
 
-@keyframes titleA {
+/* @keyframes titleA {
   0% {
     opacity: 0;
     transform: translateX(-40px);
@@ -183,9 +179,9 @@ html {
     opacity: 1;
     transform: translateX(0px);
   }
-}
+} */
 
-@keyframes titleB {
+/* @keyframes titleB {
   0% {
     opacity: 0;
     transform: translateX(40px);
@@ -205,7 +201,7 @@ html {
     opacity: 1;
     transform: translateX(0px);
   }
-}
+} */
 
 @keyframes btnA {
   0% {

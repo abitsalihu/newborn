@@ -6,12 +6,15 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 export default class HTML {
   constructor() {
     this.experience = new Experience();
+    this.body = document.querySelector("body");
     this.canvas = this.experience.canvas;
-    this.btnCon = document.querySelector(".btn-con");
-    this.bg = document.querySelector(".bg");
-    this.orbitControlsDisabled = false;
 
-    //? ADD BG ANIMATION
+    //! html
+
+    //? animate background
+
+    this.bg = document.createElement("div");
+    this.bg.classList.add("bg");
     this.bgContent = `  <div class="title">
         <h1>NewBorn</h1>
         <h2>brew</h2>
@@ -21,6 +24,31 @@ export default class HTML {
         <div class="spinnerInside"></div>
       </div>`;
     this.bg.innerHTML = this.bgContent;
+    this.body.appendChild(this.bg);
+
+    //? MainPageBTNS added to HTML
+    this.btnCon = document.createElement("div");
+    this.btnCon.classList.add("btn-con");
+    this.btnHtml = `
+      <div class="btn home">HOME</div>
+      <div class="btn events">EVENTS</div>
+      <div class="btn menu">MENU</div>
+      <div class="btn explore">EXPLORE</div>
+      `;
+    this.body.appendChild(this.btnCon);
+    this.btnCon.innerHTML += this.btnHtml;
+
+    this.orbitControlsDisabled = false;
+
+    //? Menu active BTNS
+    this.menuBtns = document.createElement("div");
+    this.menuBtns.classList.add("menu-btns");
+    this.menuBtnHtml = `<div class="previous btn">Previous</div>
+      <div class="next btn">Next</div>`;
+    this.menuBtns.innerHTML += this.menuBtnHtml;
+    this.body.appendChild(this.menuBtns);
+
+    //! end HTML
 
     this.size = this.experience.size;
     this.camera = this.experience.camera;
@@ -29,56 +57,23 @@ export default class HTML {
     this.orbitControlsEnabled = false;
     this.orbitControlsDisabled = false;
 
+    this.currPage = 1;
+
     this.resources.on("resourcesReady", () => {
       this.newBorn = this.experience.world.newBorn;
-      //?? Parameters animations on btn clicked
-      this.defaultParams = {
-        active: false,
-        func: () => {
-          this.active = false ? true : false;
-          if (this.size.width < 768) {
-            gsap.to(this.camera.instance.position, {
-              duration: 2,
-              x: 9,
-              y: 0,
-              z: 5.7,
-              ease: "power3.inOut",
-            });
-          } else {
-            gsap.to(this.camera.instance.position, {
-              duration: 2,
-              x: 11,
-              y: 0,
-              z: 5.7,
-              ease: "power3.inOut",
-            });
-          }
-        },
-      };
 
-      this.menuParams = {
-        active: false,
-        func: () => {
-          this.active = true;
-          if (this.size.width < 768) {
-            gsap.to(this.camera.instance.position, {
-              duration: 2,
-              x: 12.35,
-              y: 3,
-              z: -5.5,
-              ease: "power3.inOut",
-            });
-          } else {
-            gsap.to(this.camera.instance.position, {
-              duration: 2,
-              x: 17,
-              y: 2.2,
-              z: -3.3,
-              ease: "power3.inOut",
-            });
-          }
-        },
-      };
+      //?? Parameters animations on btn clicked
+      this.defaultParams = this.experience.animations.defaultParams;
+
+      this.menuParams = this.experience.animations.menuParams;
+
+      this.eventParams = this.experience.animations.eventParams;
+
+      this.firstPage = this.experience.animations.firstPage;
+      this.secondPage = this.experience.animations.secondPage;
+      this.thirdPage = this.experience.animations.thirdPage;
+      this.fourthPage = this.experience.animations.fourthPage;
+      this.fifthPage = this.experience.animations.fifthPage;
 
       this.orbitControlsParams = {
         func: () => {
@@ -87,7 +82,6 @@ export default class HTML {
           this.controls = new OrbitControls(this.camera.instance, this.canvas);
           this.controls.enableDamping = true;
           this.controls.target = this.newBorn.scene.position;
-          // this.newBorn.scene.rotation.y = Math.PI * 0.5;
 
           this.orbitControlsDisabled = false;
           this.newBorn.scene.scale.set(1, 1, 1);
@@ -96,40 +90,6 @@ export default class HTML {
           }
         },
       };
-
-      this.eventParams = {
-        active: false,
-        func: () => {
-          this.active = true;
-          if (this.size.width < 768) {
-            gsap.to(this.camera.instance.position, {
-              duration: 2,
-              x: 9.225,
-              y: 1.2,
-              z: -4.25,
-              ease: "power3.inOut",
-            });
-          } else {
-            gsap.to(this.camera.instance.position, {
-              duration: 2,
-              x: 8.9,
-              y: 1.2,
-              z: -9,
-              ease: "power3.inOut",
-            });
-          }
-        },
-      };
-
-      //? add btns
-      this.btnHtml = `
-      <div class="btn home">HOME</div>
-      <div class="btn events">EVENTS</div>
-      <div class="btn menu">MENU</div>
-      <div class="btn explore">EXPLORE</div>
-      `;
-
-      this.btnCon.innerHTML += this.btnHtml;
 
       setTimeout(() => {
         this.bg.classList.add("animate-bg");
@@ -145,6 +105,11 @@ export default class HTML {
           document.querySelector(".home").style.display = "inline-block";
           document.querySelector(".events").style.display = "inline-block";
           document.querySelector(".explore").style.display = "none";
+          if (this.size.width < 768) {
+            setTimeout(() => {
+              this.menuBtns.style.display = "flex";
+            }, 1500);
+          }
 
           this.menuParams.func();
         }
@@ -153,6 +118,8 @@ export default class HTML {
           document.querySelector(".home").style.display = "inline-block";
           document.querySelector(".menu").style.display = "inline-block";
           document.querySelector(".explore").style.display = "none";
+          this.menuBtns.style.display = "none";
+          this.currPage = 1;
 
           this.eventParams.func();
         }
@@ -161,6 +128,8 @@ export default class HTML {
           document.querySelector(".events").style.display = "inline-block";
           document.querySelector(".menu").style.display = "inline-block";
           document.querySelector(".explore").style.display = "inline-block";
+          this.menuBtns.style.display = "none";
+          this.currPage = 1;
 
           this.defaultParams.func();
           console.log(this.camera.instance.position);
@@ -173,11 +142,57 @@ export default class HTML {
           }
         }
         if (e.target.classList.contains("explore")) {
-          this.orbitControlsParams.func();
           e.target.style.display = "none";
           document.querySelector(".events").style.display = "none";
           document.querySelector(".menu").style.display = "none";
           document.querySelector(".home").style.display = "inline-block";
+          this.orbitControlsParams.func();
+        }
+      });
+      this.menuBtns.addEventListener("click", (e) => {
+        this.previous = this.menuBtns.firstElementChild;
+        this.next = this.menuBtns.lastElementChild;
+
+        if (e.target.classList.contains("previous")) {
+          if (this.currPage > 1) {
+            this.currPage--;
+            if (this.currPage === 1) {
+              this.firstPage.func();
+              e.target.style.display = "none";
+            }
+            if (this.currPage === 2) {
+              this.secondPage.func();
+              console.log(this.currPage);
+            }
+            if (this.currPage === 3) {
+              this.thirdPage.func();
+            }
+            if (this.currPage === 4) {
+              this.fourthPage.func();
+              this.next.style.display = "inline-block";
+            }
+          }
+        }
+        if (e.target.classList.contains("next")) {
+          this.next = e.target;
+
+          if (this.currPage >= 1 && this.currPage < 5) {
+            this.currPage++;
+            if (this.currPage === 2) {
+              this.secondPage.func();
+              this.previous.style.display = "inline-block";
+            }
+            if (this.currPage === 3) {
+              this.thirdPage.func();
+            }
+            if (this.currPage === 4) {
+              this.fourthPage.func();
+            }
+            if (this.currPage === 5) {
+              this.fifthPage.func();
+              e.target.style.display = "none";
+            }
+          }
         }
       });
     });
@@ -186,7 +201,7 @@ export default class HTML {
   update() {
     if (this.orbitControlsEnabled) {
       this.controls.update();
-      console.log("active");
+      console.log("active orbitControls");
     }
   }
 }

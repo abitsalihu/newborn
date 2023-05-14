@@ -201,7 +201,6 @@ export default class HTML {
   update() {
     if (this.orbitControlsEnabled) {
       this.controls.update();
-      console.log("active orbitControls");
     }
   }
 }

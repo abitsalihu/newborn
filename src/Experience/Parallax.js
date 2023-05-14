@@ -13,8 +13,6 @@ export default class Parallax {
     this.cursor.x = 0;
     this.cursor.y = 0;
 
-    console.log(this.cursor);
-
     window.addEventListener("scroll", () => {
       this.scrollY = window.scrollY;
       // console.log(this.scrollY);

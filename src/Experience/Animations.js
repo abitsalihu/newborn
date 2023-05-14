@@ -7,9 +7,7 @@ export default class Animations {
     this.experience = new Experience();
     this.size = this.experience.size;
     this.camera = this.experience.camera.instance;
-    console.log(this.camera);
 
-    // console.log(this.camera.instance);
     this.currPage = 0;
 
     this.camera = this.experience.camera.instance;
@@ -94,7 +92,7 @@ export default class Animations {
     this.secondPage = {
       func: () => {
         gsap.to(this.camera.position, {
-          duration: 2,
+          duration: 1.5,
           x: 14.6,
           y: 3,
           z: -5.5,
@@ -105,7 +103,7 @@ export default class Animations {
     this.thirdPage = {
       func: () => {
         gsap.to(this.camera.position, {
-          duration: 2,
+          duration: 1.5,
           x: 16.9,
           y: 3,
           z: -5.5,
@@ -116,8 +114,8 @@ export default class Animations {
     this.fourthPage = {
       func: () => {
         gsap.to(this.camera.position, {
-          duration: 2,
-          x: 19.15,
+          duration: 1.5,
+          x: 19.25,
           y: 3,
           z: -5.5,
           ease: "power3.inOut",
@@ -127,8 +125,8 @@ export default class Animations {
     this.fifthPage = {
       func: () => {
         gsap.to(this.camera.position, {
-          duration: 2,
-          x: 21.4,
+          duration: 1.5,
+          x: 21.55,
           y: 3,
           z: -5.5,
           ease: "power3.inOut",

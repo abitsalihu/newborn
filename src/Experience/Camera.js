@@ -36,13 +36,7 @@ export default class Camera {
     if (this.size.width < 768) {
       this.instance.position.set(9, 0, 5.7);
     }
-    console.log(this.instance.position);
   }
-
-  // setOrbitControls() {
-  //   this.controls = new OrbitControls(this.instance, this.canvas);
-  //   // this.controls.enableDamping = true;
-  // }
 
   resize() {
     this.instance.aspect = this.size.width / this.size.height;

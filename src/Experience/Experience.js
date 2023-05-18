@@ -59,6 +59,7 @@ export default class Experience {
 
     this.camera.update();
     this.renderer.update();
+    this.resources.update();
     this.world.update();
     this.parallax.update();
     this.debug.stats.end();

@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import EventEmitter from "./EventEmitter";
 
 export default class Resources extends EventEmitter {
@@ -11,6 +12,7 @@ export default class Resources extends EventEmitter {
     this.items = [];
     this.itemsToLoad = this.source.length;
     this.itemsLoaded = 0;
+    this.sceneReady = null;
 
     this.setUpLoaders();
     this.startLoading();
@@ -50,6 +52,12 @@ export default class Resources extends EventEmitter {
 
     if (this.itemsLoaded === this.itemsToLoad) {
       this.trigger("resourcesReady");
+    }
+  }
+
+  update() {
+    if (this.itemsLoaded === this.itemsToLoad) {
+      this.sceneReady = true;
     }
   }
 }

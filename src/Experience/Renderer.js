@@ -23,7 +23,7 @@ export default class Renderer {
     this.instance.setClearColor("#FFDCB6");
     this.instance.outputColorSpace = THREE.SRGBColorSpace;
     this.instance.toneMapping = THREE.ACESFilmicToneMapping;
-    this.instance.toneMappingExposure = 4.5;
+    this.instance.toneMappingExposure = 1.5;
   }
 
   resize() {

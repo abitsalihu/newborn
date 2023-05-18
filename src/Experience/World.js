@@ -8,6 +8,8 @@ export default class World {
     this.debug = this.experience.debug;
     this.size = this.experience.size;
     this.renderer = this.experience.renderer;
+    this.sceneReady = this.experience.resources.sceneReady;
+    this.body = document.querySelector("body");
 
     this.clock = new THREE.Clock();
     this.previousTime = 0;
@@ -24,23 +26,74 @@ export default class World {
   setUpScene() {
     this.resources.on("resourcesReady", () => {
       //? environment texture
-      this.envTexture = this.experience.resources.items.envTexture;
-      this.envTexture.colorSpace = THREE.SRGBColorSpace;
+      // this.envTexture = this.experience.resources.items.envTexture;
+      // this.envTexture.colorSpace = THREE.SRGBColorSpace;
+      // this.envTexture.exposure = 10;
+      // // this.scene.environment = this.envTexture;
 
       //? BAKED texture
-      // this.bakedTexture = this.resources.items.bakedTexture;
-      // this.bakedTexture.flipY = false;
-      // this.bakedTexture.colorSpace = THREE.SRGBColorSpace;
+      //! first baked texture
+
+      this.bakedTexture = this.resources.items.bakedScene;
+
+      this.bakedTexture.flipY = false;
+      this.bakedTexture.colorSpace = THREE.SRGBColorSpace;
+
+      //! second baked texture
+      this.backSceneBaked = this.resources.items.backSceneBaked;
+
+      this.backSceneBaked.flipY = false;
+      this.backSceneBaked.colorSpace = THREE.SRGBColorSpace;
+
+      //! third baked texture
+      this.thirdTexture = this.resources.items.thirdTexture;
+
+      this.thirdTexture.flipY = false;
+      this.thirdTexture.colorSpace = THREE.SRGBColorSpace;
+
+      //! fourth baked texture
+      this.writtenTexture = this.resources.items.writtenTexture;
+
+      this.writtenTexture.flipY = false;
+      this.writtenTexture.colorSpace = THREE.SRGBColorSpace;
+
+      //! fifth baked texture
+      this.fifthTexture = this.resources.items.fourthTexture;
+
+      this.fifthTexture.flipY = false;
+      this.fifthTexture.colorSpace = THREE.SRGBColorSpace;
 
       //? scenes
       this.newBorn = this.resources.items.newBorn;
-      // this.newBornGlass = this.resources.items.newBornGlass;
 
-      // this.newBorn.scene.traverse((child) => {
-      //   child.material = new THREE.MeshBasicMaterial({
-      //     map: this.bakedTexture,
-      //   });
-      // });
+      this.newBorn.scene.traverse((child) => {
+        child.material = new THREE.MeshBasicMaterial({
+          map: this.bakedTexture,
+        });
+        if (child.name.startsWith("secondScene")) {
+          child.material = new THREE.MeshBasicMaterial({
+            map: this.backSceneBaked,
+          });
+        }
+        if (child.name.startsWith("thirdTexture")) {
+          child.material = new THREE.MeshBasicMaterial({
+            map: this.thirdTexture,
+          });
+        }
+
+        if (child.name.startsWith("writtenTexture")) {
+          child.material = new THREE.MeshBasicMaterial({
+            map: this.writtenTexture,
+          });
+        }
+
+        if (child.name.startsWith("fourthTexture")) {
+          child.material = new THREE.MeshBasicMaterial({
+            map: this.fifthTexture,
+          });
+        }
+      });
+
       //? newbORN SCENE PARAMS
 
       this.newBorn.scene.rotation.y = Math.PI * 0.5;
@@ -51,16 +104,6 @@ export default class World {
       if (this.size.width < 778) {
       }
       this.scene.add(this.newBorn.scene);
-
-      // this.newBorn.scene.traverse((child) => {
-
-      //   child.material = new THREE.MeshBasicMaterial({ color: "black" });
-      //   console.log(child);
-      // });
-
-      this.scene.traverse((child) => {
-        child.environment = this.envTexture;
-      });
     });
   }
 

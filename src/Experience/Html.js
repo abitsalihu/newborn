@@ -275,6 +275,38 @@ export default class HTML {
           }
         },
       };
+      if (window.location.hash === "#home") {
+        this.defaultParams.func();
+
+        document.querySelector(".home").style.display = "none";
+
+        document.querySelector(".menu").style.display = "inline-block";
+        document.querySelector(".events").style.display = "inline-block";
+        document.querySelector(".explore").style.display = "inline-block";
+      }
+
+      if (window.location.hash === "#events") {
+        this.eventParams.func();
+
+        document.querySelector(".events").style.display = "none";
+        document.querySelector(".home").style.display = "inline-block";
+        document.querySelector(".menu").style.display = "inline-block";
+        document.querySelector(".explore").style.display = "none";
+      }
+
+      if (window.location.hash === "#menu") {
+        document.querySelector(".menu").style.display = "none";
+        document.querySelector(".home").style.display = "inline-block";
+        document.querySelector(".events").style.display = "inline-block";
+        document.querySelector(".explore").style.display = "none";
+
+        if (this.size.width < 768) {
+          setTimeout(() => {
+            this.menuBtns.style.display = "flex";
+          }, 1500);
+        }
+        this.menuParams.func();
+      }
 
       setTimeout(() => {
         this.bg.classList.add("animate-bg");
@@ -286,7 +318,9 @@ export default class HTML {
       //? Event Listeners for the btn clicked
       this.btnCon.addEventListener("click", (e) => {
         if (e.target.classList.contains("menu")) {
+          window.location.hash = "#menu";
           e.target.style.display = "none";
+
           document.querySelector(".home").style.display = "inline-block";
           document.querySelector(".events").style.display = "inline-block";
           document.querySelector(".explore").style.display = "none";
@@ -305,7 +339,8 @@ export default class HTML {
           document.querySelector(".explore").style.display = "none";
           this.menuBtns.style.display = "none";
           this.currPage = 1;
-
+          window.location.hash = "#events";
+          window.location.hash === "#events";
           this.eventParams.func();
         }
         if (e.target.classList.contains("home")) {
@@ -315,8 +350,11 @@ export default class HTML {
           document.querySelector(".explore").style.display = "inline-block";
           this.menuBtns.style.display = "none";
           this.currPage = 1;
+          window.location.hash = "#home";
+          if (window.location.hash === "#home") {
+            this.defaultParams.func();
+          }
 
-          this.defaultParams.func();
           console.log(this.camera.instance.position);
           if (this.orbitControlsEnabled) {
             this.btnCon.style.display = "none";

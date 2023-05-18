@@ -34,16 +34,16 @@ export default class World {
       //? BAKED texture
       //! first baked texture
 
-      this.bakedTexture = this.resources.items.bakedScene;
+      this.firstTexture = this.resources.items.bakedScene;
 
-      this.bakedTexture.flipY = false;
-      this.bakedTexture.colorSpace = THREE.SRGBColorSpace;
+      this.firstTexture.flipY = false;
+      this.firstTexture.colorSpace = THREE.SRGBColorSpace;
 
       //! second baked texture
-      this.backSceneBaked = this.resources.items.backSceneBaked;
+      this.secondTexture = this.resources.items.backSceneBaked;
 
-      this.backSceneBaked.flipY = false;
-      this.backSceneBaked.colorSpace = THREE.SRGBColorSpace;
+      this.secondTexture.flipY = false;
+      this.secondTexture.colorSpace = THREE.SRGBColorSpace;
 
       //! third baked texture
       this.thirdTexture = this.resources.items.thirdTexture;
@@ -63,16 +63,28 @@ export default class World {
       this.fifthTexture.flipY = false;
       this.fifthTexture.colorSpace = THREE.SRGBColorSpace;
 
+      //! fifth baked texture
+      this.sixthTexture = this.resources.items.sixthTexture;
+
+      this.sixthTexture.flipY = false;
+      this.sixthTexture.colorSpace = THREE.SRGBColorSpace;
+
       //? scenes
       this.newBorn = this.resources.items.newBorn;
 
       this.newBorn.scene.traverse((child) => {
         child.material = new THREE.MeshBasicMaterial({
-          map: this.bakedTexture,
+          color: "#f5f5f5",
         });
+        console.log(child);
+        if (child.name.startsWith("firstTexture")) {
+          child.material = new THREE.MeshBasicMaterial({
+            map: this.firstTexture,
+          });
+        }
         if (child.name.startsWith("secondScene")) {
           child.material = new THREE.MeshBasicMaterial({
-            map: this.backSceneBaked,
+            map: this.secondTexture,
           });
         }
         if (child.name.startsWith("thirdTexture")) {
@@ -90,6 +102,12 @@ export default class World {
         if (child.name.startsWith("fourthTexture")) {
           child.material = new THREE.MeshBasicMaterial({
             map: this.fifthTexture,
+          });
+        }
+
+        if (child.name.startsWith("sixthTexture")) {
+          child.material = new THREE.MeshBasicMaterial({
+            map: this.sixthTexture,
           });
         }
       });

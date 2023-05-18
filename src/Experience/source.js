@@ -41,9 +41,15 @@ export default [
     type: "textureLoader",
     path: "/textures/fifthTexture.jpg",
   },
+
+  {
+    name: "sixthTexture",
+    type: "textureLoader",
+    path: "/textures/sixthTexture.jpg",
+  },
   {
     name: "newBorn",
     type: "gltfLoader",
-    path: "/models/finalBakedND.glb",
+    path: "/models/newBornBrew.glb",
   },
 ];

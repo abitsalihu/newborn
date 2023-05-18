@@ -231,7 +231,6 @@ export default class HTML {
     }, 10000);
 
     this.resources.on("resourcesReady", () => {
-      console.log(this.sceneReady);
       this.sceneReady = true;
 
       this.newBorn = this.experience.world.newBorn;
@@ -257,17 +256,22 @@ export default class HTML {
 
           this.controls = new OrbitControls(this.camera.instance, this.canvas);
           this.controls.enableDamping = true;
+
+          this.controls.maxDistance = 20;
+          this.controls.minDistance = 10;
+
+          //? limit side movement
+          // this.controls.maxAzimuthAngle = 2;
+          // this.controls.minAzimuthAngle = 0;
+
+          this.controls.maxPolarAngle = Math.PI / 2; // Limit angle of visibility
           this.controls.target = this.newBorn.scene.position;
 
           this.orbitControlsDisabled = false;
           this.newBorn.scene.scale.set(1, 1, 1);
 
-          this.writtenObjects.scene.scale.set(1, 1, 1);
-
           if (this.size.width < 768) {
             this.newBorn.scene.scale.set(0.7, 0.7, 0.7);
-            this.writtenObjects.scene.scale.set(0.7, 0.7, 0.7);
-            console.log("active");
           }
         },
       };

@@ -228,7 +228,7 @@ export default class HTML {
           this.bg.classList.add("animate-bg");
         }, 1000);
       }
-    }, 5000);
+    }, 10000);
 
     this.resources.on("resourcesReady", () => {
       console.log(this.sceneReady);

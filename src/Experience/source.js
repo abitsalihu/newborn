@@ -15,7 +15,7 @@ export default [
   {
     name: "bakedScene",
     type: "textureLoader",
-    path: "/textures/bakedDesk.jpg",
+    path: "/textures/bakedDesk.webp",
   },
 
   {
@@ -33,7 +33,7 @@ export default [
   {
     name: "writtenTexture",
     type: "textureLoader",
-    path: "/textures/fixedTipWritten.jpg",
+    path: "/textures/fixedTipWritten.webp",
   },
 
   {

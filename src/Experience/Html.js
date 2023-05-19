@@ -206,6 +206,18 @@ export default class HTML {
         </div>
       </div>`;
 
+    //? SIGN UP btn
+
+    this.signUp = document.createElement("div");
+    this.signUp.classList.add("signUp-con");
+    this.signUp.innerHTML = `
+    <div class="signUp">
+        <a href="https://linktr.ee/newbornbrew">Sign Up</a>
+      </div>
+    `;
+
+    this.body.appendChild(this.signUp);
+
     //! end HTML
 
     this.size = this.experience.size;
@@ -287,6 +299,7 @@ export default class HTML {
 
       if (window.location.hash === "#events") {
         this.eventParams.func();
+        document.querySelector(".signUp").style.display = "inline-block";
 
         document.querySelector(".events").style.display = "none";
         document.querySelector(".home").style.display = "inline-block";
@@ -324,6 +337,7 @@ export default class HTML {
           document.querySelector(".home").style.display = "inline-block";
           document.querySelector(".events").style.display = "inline-block";
           document.querySelector(".explore").style.display = "none";
+          document.querySelector(".signUp").style.display = "none";
           if (this.size.width < 768) {
             setTimeout(() => {
               this.menuBtns.style.display = "flex";
@@ -337,6 +351,8 @@ export default class HTML {
           document.querySelector(".home").style.display = "inline-block";
           document.querySelector(".menu").style.display = "inline-block";
           document.querySelector(".explore").style.display = "none";
+          document.querySelector(".signUp").style.display = "inline-block";
+
           this.menuBtns.style.display = "none";
           this.currPage = 1;
           window.location.hash = "#events";
@@ -348,6 +364,8 @@ export default class HTML {
           document.querySelector(".events").style.display = "inline-block";
           document.querySelector(".menu").style.display = "inline-block";
           document.querySelector(".explore").style.display = "inline-block";
+          document.querySelector(".signUp").style.display = "none";
+
           this.menuBtns.style.display = "none";
           this.currPage = 1;
           window.location.hash = "#home";

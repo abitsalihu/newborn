@@ -20,6 +20,8 @@ export default class World {
     this.resources = this.experience.resources;
     this.camera = this.experience.camera;
 
+    //? particles
+
     this.setUpScene();
   }
 
@@ -76,7 +78,7 @@ export default class World {
         child.material = new THREE.MeshBasicMaterial({
           color: "#f5f5f5",
         });
-        console.log(child);
+
         if (child.name.startsWith("firstTexture")) {
           child.material = new THREE.MeshBasicMaterial({
             map: this.firstTexture,
@@ -122,8 +124,59 @@ export default class World {
       if (this.size.width < 778) {
       }
       this.scene.add(this.newBorn.scene);
+
+      if (this.debug.active) {
+        this.debugActive();
+      }
     });
   }
 
   update() {}
+
+  debugActive() {
+    console.log(this.newBorn);
+    console.log(this.newBorn.scale);
+
+    if (this.newBorn) {
+      this.scaleChange = {
+        scale: 0,
+      };
+      this.guiScene = this.debug.gui.addFolder("Scene");
+      // this.debug.gui.addFolder(this.guiScene);
+      this.guiScene
+        .add(this.newBorn.scene.position, "x")
+        .min(-10)
+        .max(10)
+        .step(0.001)
+        .name("sceneX");
+
+      this.guiScene
+        .add(this.newBorn.scene.position, "y")
+        .min(-10)
+        .max(10)
+        .step(0.001)
+        .name("sceneX");
+
+      this.guiScene
+        .add(this.newBorn.scene.position, "z")
+        .min(-10)
+        .max(10)
+        .step(0.001)
+        .name("sceneX");
+
+      this.guiScene
+        .add(this.scaleChange, "scale")
+        .min(0)
+        .max(10)
+        .step(0.01)
+        .name("sceneScaleX")
+        .onFinishChange(() => {
+          this.newBorn.scene.scale.set(
+            this.scaleChange.scale,
+            this.scaleChange.scale,
+            this.scaleChange.scale
+          );
+        });
+    }
+  }
 }

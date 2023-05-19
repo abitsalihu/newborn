@@ -44,6 +44,7 @@ export default class HTML {
     //? Menu active BTNS
     this.menuBtns = document.createElement("div");
     this.menuBtns.classList.add("menu-btns");
+
     this.menuBtnHtml = `<div class="previous btn">Previous</div>
       <div class="next btn">Next</div>`;
     this.menuBtns.innerHTML += this.menuBtnHtml;
@@ -339,9 +340,7 @@ export default class HTML {
           document.querySelector(".explore").style.display = "none";
           document.querySelector(".signUp").style.display = "none";
           if (this.size.width < 768) {
-            setTimeout(() => {
-              this.menuBtns.style.display = "flex";
-            }, 1500);
+            this.menuBtns.style.display = "flex";
           }
 
           this.menuParams.func();

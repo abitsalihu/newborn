@@ -11,6 +11,7 @@ export default class HTML {
     this.sceneReady = false;
 
     this.todaysDate = new Date().getDate();
+
     this.events = this.experience.events;
 
     //? loop to get today's event

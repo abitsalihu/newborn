@@ -71,6 +71,12 @@ export default class World {
       this.sixthTexture.flipY = false;
       this.sixthTexture.colorSpace = THREE.SRGBColorSpace;
 
+      //! event baked texture
+      this.event = this.resources.items.events;
+
+      this.event.flipY = false;
+      this.event.colorSpace = THREE.SRGBColorSpace;
+
       //? scenes
       this.newBorn = this.resources.items.newBorn;
 
@@ -84,6 +90,7 @@ export default class World {
             map: this.firstTexture,
           });
         }
+
         if (child.name.startsWith("secondScene")) {
           child.material = new THREE.MeshBasicMaterial({
             map: this.secondTexture,
@@ -98,6 +105,12 @@ export default class World {
         if (child.name.startsWith("writtenTexture")) {
           child.material = new THREE.MeshBasicMaterial({
             map: this.writtenTexture,
+          });
+        }
+
+        if (child.name.startsWith("event")) {
+          child.material = new THREE.MeshBasicMaterial({
+            map: this.event,
           });
         }
 

@@ -18,6 +18,12 @@ export default [
   },
 
   {
+    name: "events",
+    type: "textureLoader",
+    path: "/textures/eventsBaked.jpg",
+  },
+
+  {
     name: "writtenTexture",
     type: "textureLoader",
     path: "/textures/fixedTipWritten.jpg",
@@ -37,6 +43,6 @@ export default [
   {
     name: "newBorn",
     type: "gltfLoader",
-    path: "/models/newBornBrew.glb",
+    path: "/models/finalNewBorn.glb",
   },
 ];

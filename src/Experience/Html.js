@@ -102,7 +102,7 @@ export default class HTML {
     this.simpleWebsite = document.createElement("div");
     this.simpleWebsite.classList.add("simple-website");
 
-    this.simpleWebsite.innerHTML = `<div class="title">
+    this.simpleWebsite.innerHTML = `<div class="eventTitle">
         <h1>NewBorn</h1>
         <h2>brew</h2>
       </div>
@@ -266,7 +266,6 @@ export default class HTML {
       `;
 
     this.eventCon = document.querySelector(".eventContent");
-    console.log(this.eventCon);
 
     //? SIGN UP btn
 
@@ -293,8 +292,6 @@ export default class HTML {
 
     setTimeout(() => {
       if (!this.sceneReady) {
-        console.log(this.sceneReady);
-
         this.btnCon.remove();
         this.menuBtns.remove();
         document.querySelector(".web-gl").remove();
@@ -305,12 +302,10 @@ export default class HTML {
         }
         if (this.sEvent) {
           this.eventCon.appendChild(this.sEvent);
-          console.log(this.fEvent);
         }
 
         if (this.noEvent) {
           this.eventCon.appendChild(this.noEvent);
-          console.log(this.noEvent);
         }
 
         setTimeout(() => {

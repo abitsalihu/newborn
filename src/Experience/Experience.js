@@ -33,7 +33,6 @@ export default class Experience {
     this.time = new Time();
     this.resources = new Resources(source);
     this.events = events;
-    console.log(this.events);
 
     //? world Setup
     this.scene = new THREE.Scene();

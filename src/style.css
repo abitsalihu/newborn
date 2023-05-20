@@ -173,7 +173,7 @@ body {
   background-color: #1e1e1e;
   color: #f5f5f5;
   font-size: 2rem;
-  padding: 10px 0px;
+  padding: 10px 0px 40px 0px;
   flex-direction: column;
 }
 
@@ -276,6 +276,37 @@ body {
 }
 .line-br:nth-of-type(1) {
   margin: 20px 0px;
+}
+
+.eventTitle {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 20px 0px 0px 0px;
+}
+
+.eventTitle h2 {
+  font-family: "Pacifico", sans-serif;
+  color: #ffd95a;
+}
+
+.fEvent {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+.sEvent {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  border-top: 1px solid #ffd95a;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.noEvent {
+  text-align: center;
 }
 
 /*! SIMPLE WEBSITE CREATION -- END  */

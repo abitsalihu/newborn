@@ -10,6 +10,55 @@ export default class HTML {
     this.canvas = this.experience.canvas;
     this.sceneReady = false;
 
+    this.todaysDate = new Date().getDate();
+    this.events = this.experience.events;
+
+    //? loop to get today's event
+    for (const event of this.events) {
+      if (event.date === this.todaysDate) {
+        if (event.event) {
+          this.fEvent = document.createElement("div");
+          this.fEvent.classList.add("fEvent");
+          this.fEvent.innerHTML = `
+          <div>
+          Event:
+          <span class="fPage__item--price"> ${event.eventName} </span>
+          </div>
+          <div>
+          Starts at:
+          <span class="fPage__item--price">${event.start} </span>
+          </div>
+        `;
+          console.log(this.fEvent);
+
+          if (event.secondEvent) {
+            this.sEvent = document.createElement("div");
+            this.sEvent.classList.add("sEvent");
+
+            this.sEvent.innerHTML = `
+            <div>
+          Event:
+          <span class="fPage__item--price"> ${event.secondEventName} </span>
+          </div>
+          <div>
+          Starts at:
+          <span class="fPage__item--price">${event.secondEventStart} </span>
+            </div>
+            `;
+            console.log(this.sEvent);
+          }
+        } else {
+          this.noEvent = document.createElement("div");
+          this.noEvent.classList.add("noEvent");
+          this.noEvent.innerHTML = `
+            There are no events <span class="fPage__item--price">TODAY :( </span>, check again tomorrow!!
+          `;
+        }
+      }
+    }
+    //? FINISH LOOP
+    // console.log(this.todaysDate, this.todaysHour);
+
     //! html
 
     //? animate background
@@ -205,7 +254,19 @@ export default class HTML {
           <div class="fPage__item--title">STROOPWAFFEL</div>
           <div class="fPage__item--price">0.6</div>
         </div>
-      </div>`;
+
+      </div>
+       <div class="eventTitle">
+        <h1>Events</h1>
+        <h2>Today</h2>
+      </div>
+      <div class="fPage eventContent">
+
+      </div>
+      `;
+
+    this.eventCon = document.querySelector(".eventContent");
+    console.log(this.eventCon);
 
     //? SIGN UP btn
 
@@ -233,15 +294,30 @@ export default class HTML {
     setTimeout(() => {
       if (!this.sceneReady) {
         console.log(this.sceneReady);
+
         this.btnCon.remove();
         this.menuBtns.remove();
         document.querySelector(".web-gl").remove();
         this.body.appendChild(this.simpleWebsite);
+        this.eventCon = document.querySelector(".eventContent");
+        if (this.fEvent) {
+          this.eventCon.appendChild(this.fEvent);
+        }
+        if (this.sEvent) {
+          this.eventCon.appendChild(this.sEvent);
+          console.log(this.fEvent);
+        }
+
+        if (this.noEvent) {
+          this.eventCon.appendChild(this.noEvent);
+          console.log(this.noEvent);
+        }
+
         setTimeout(() => {
           this.bg.classList.add("animate-bg");
         }, 1000);
       }
-    }, 10000);
+    }, 0);
 
     this.resources.on("resourcesReady", () => {
       this.sceneReady = true;

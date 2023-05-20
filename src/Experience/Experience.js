@@ -10,6 +10,7 @@ import World from "./World";
 import Parallax from "./Parallax";
 import HTML from "./Html";
 import Animations from "./Animations";
+import events from "./events";
 let instance = null;
 
 export default class Experience {
@@ -31,6 +32,8 @@ export default class Experience {
     this.size = new Size();
     this.time = new Time();
     this.resources = new Resources(source);
+    this.events = events;
+    console.log(this.events);
 
     //? world Setup
     this.scene = new THREE.Scene();

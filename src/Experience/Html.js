@@ -317,7 +317,7 @@ export default class HTML {
           this.bg.classList.add("animate-bg");
         }, 1000);
       }
-    }, 0);
+    }, 7000);
 
     this.resources.on("resourcesReady", () => {
       this.sceneReady = true;

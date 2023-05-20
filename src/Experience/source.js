@@ -1,21 +1,8 @@
 export default [
-  // {
-  //   name: "envTexture",
-  //   type: "cubeTextureLoader",
-  //   path: [
-  //     "./textures/environmentMaps/0/px.jpg",
-  //     "/textures/environmentMaps/0/nx.jpg",
-  //     "/textures/environmentMaps/0/py.jpg",
-  //     "/textures/environmentMaps/0/ny.jpg",
-  //     "/textures/environmentMaps/0/pz.jpg",
-  //     "/textures/environmentMaps/0/nz.jpg",
-  //   ],
-  // },
-
   {
     name: "bakedScene",
     type: "textureLoader",
-    path: "/textures/bakedDesk.webp",
+    path: "/textures/bakedDesk.jpg",
   },
 
   {
@@ -33,7 +20,7 @@ export default [
   {
     name: "writtenTexture",
     type: "textureLoader",
-    path: "/textures/fixedTipWritten.webp",
+    path: "/textures/fixedTipWritten.jpg",
   },
 
   {

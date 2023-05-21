@@ -318,6 +318,7 @@ body {
   justify-content: center;
   position: absolute;
   bottom: 0;
+  pointer-events: none;
 }
 .signUp {
   position: absolute;
@@ -332,6 +333,7 @@ body {
   opacity: 0;
   animation: signUp 1.75s ease forwards 1s;
   margin: 10px 15px;
+  pointer-events: all;
 }
 
 .signUp a,

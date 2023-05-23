@@ -336,7 +336,7 @@ body {
   pointer-events: all;
 }
 
-.signUp a,
+/* .signUp a,
 .signUp a:active {
   text-decoration: none;
   color: #ffd95a;
@@ -344,6 +344,25 @@ body {
   padding: 10px 17.5px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.5) 1.95px 1.95px 2.6px;
+} */
+
+.signUp_link,
+.signUp_link:active {
+  text-decoration: none;
+  color: #ffd95a;
+  background: #1e1e1e;
+  padding: 10px 17.5px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.5) 1.95px 1.95px 2.6px;
+}
+
+.simple-SignUp {
+  margin: 30px 0px;
+}
+
+.light {
+  background: #ffd95a;
+  color: #1e1e1e;
 }
 /*! animations / */
 

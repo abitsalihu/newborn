@@ -141,7 +141,7 @@ export default [
     date: 23,
     event: true,
     start: "09:00 AM",
-    eventName: "BIBLE STUDY 9:00",
+    eventName: "BIBLE STUDY",
   },
   {
     date: 24,

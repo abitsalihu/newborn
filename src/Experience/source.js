@@ -20,7 +20,7 @@ export default [
   {
     name: "writtenTexture",
     type: "textureLoader",
-    path: "/textures/fixedTipWritten.jpg",
+    path: "/textures/latestWrittenTexture.jpg",
   },
 
   {

@@ -100,6 +100,9 @@ export default class HTML {
     this.menuBtns.innerHTML += this.menuBtnHtml;
     this.body.appendChild(this.menuBtns);
 
+    this.previous = this.menuBtns.firstElementChild;
+    this.next = this.menuBtns.lastElementChild;
+
     this.simpleWebsite = document.createElement("div");
     this.simpleWebsite.classList.add("simple-website");
 
@@ -263,6 +266,11 @@ export default class HTML {
       </div>
       <div class="fPage eventContent">
 
+
+       
+      </div>
+      <div class="simple-SignUp">
+        <a class="signUp_link light" href="https://linktr.ee/newbornbrew">Sign Up</a>
       </div>
       `;
 
@@ -274,7 +282,7 @@ export default class HTML {
     this.signUp.classList.add("signUp-con");
     this.signUp.innerHTML = `
     <div class="signUp">
-        <a href="https://linktr.ee/newbornbrew">Sign Up</a>
+        <a class="signUp_link" href="https://linktr.ee/newbornbrew">Sign Up</a>
       </div>
     `;
 
@@ -423,9 +431,11 @@ export default class HTML {
           document.querySelector(".menu").style.display = "inline-block";
           document.querySelector(".explore").style.display = "none";
           document.querySelector(".signUp").style.display = "inline-block";
-
           this.menuBtns.style.display = "none";
           this.currPage = 1;
+          this.previous.style.display = "none";
+          this.next.style.display = "inline-block";
+
           window.location.hash = "#events";
           window.location.hash === "#events";
           this.eventParams.func();
@@ -439,6 +449,8 @@ export default class HTML {
 
           this.menuBtns.style.display = "none";
           this.currPage = 1;
+          this.previous.style.display = "none";
+          this.next.style.display = "inline-block";
           window.location.hash = "#home";
           if (window.location.hash === "#home") {
             this.defaultParams.func();
@@ -462,8 +474,8 @@ export default class HTML {
         }
       });
       this.menuBtns.addEventListener("click", (e) => {
-        this.previous = this.menuBtns.firstElementChild;
-        this.next = this.menuBtns.lastElementChild;
+        // this.previous = this.menuBtns.firstElementChild;
+        // this.next = this.menuBtns.lastElementChild;
 
         if (e.target.classList.contains("previous")) {
           if (this.currPage > 1) {

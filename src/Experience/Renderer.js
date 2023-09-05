@@ -21,6 +21,8 @@ export default class Renderer {
     this.instance.setSize(this.size.width, this.size.height);
     this.instance.setPixelRatio(this.size.pixelRatio);
     this.instance.setClearColor("#FFDCB6");
+    this.instance.setClearColor("#000000");
+
     this.instance.outputColorSpace = THREE.SRGBColorSpace;
     this.instance.toneMapping = THREE.ACESFilmicToneMapping;
     this.instance.toneMappingExposure = 1.5;

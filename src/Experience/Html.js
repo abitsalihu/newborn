@@ -326,7 +326,7 @@ export default class HTML {
     this.resources.on("resourcesReady", () => {
       this.sceneReady = true;
 
-      this.newBorn = this.experience.world.newBorn;
+      // this.newBorn = this.experience.world.newBorn;
 
       this.writtenObjects = this.experience.world.writtenObjects;
 
@@ -350,26 +350,26 @@ export default class HTML {
           this.controls = new OrbitControls(this.camera.instance, this.canvas);
           this.controls.enableDamping = true;
 
-          this.controls.maxDistance = 20;
-          this.controls.minDistance = 10;
+          // this.controls.maxDistance = 20;
+          // this.controls.minDistance = 10;
 
           //? limit side movement
           // this.controls.maxAzimuthAngle = 2;
           // this.controls.minAzimuthAngle = 0;
 
-          this.controls.maxPolarAngle = Math.PI / 2; // Limit angle of visibility
-          this.controls.target = this.newBorn.scene.position;
+          // this.controls.maxPolarAngle = Math.PI / 2; // Limit angle of visibility
+          // this.controls.target = this.newBorn.scene.position;
 
-          this.orbitControlsDisabled = false;
-          this.newBorn.scene.scale.set(1, 1, 1);
+          // this.orbitControlsDisabled = false;
+          // this.newBorn.scene.scale.set(1, 1, 1);
 
           if (this.size.width < 768) {
-            this.newBorn.scene.scale.set(0.7, 0.7, 0.7);
+            // this.newBorn.scene.scale.set(0.7, 0.7, 0.7);
           }
         },
       };
       if (window.location.hash === "#home") {
-        this.defaultParams.func();
+        // this.defaultParams.func();
 
         document.querySelector(".home").style.display = "none";
 
@@ -524,7 +524,7 @@ export default class HTML {
 
   update() {
     if (this.orbitControlsEnabled) {
-      this.controls.update();
+      // this.controls.update();
     }
   }
 }

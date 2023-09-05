@@ -12,10 +12,11 @@ export default class Camera {
     this.scene = this.experience.scene;
     this.size = this.experience.size;
     this.fov = {
-      x: 30,
+      x: 25,
     };
 
     this.setInstance();
+    this.setControls();
 
     if (this.debug.active) {
       this.debugActive();
@@ -32,10 +33,36 @@ export default class Camera {
       100
     );
     this.instanceGroup.add(this.instance);
-    this.instance.position.set(11, 0, 5.7);
+    // this.instance.position.set(11, 0, 5.7);
+    this.instance.position.set(-7.2, 3.7, 9.435);
     if (this.size.width < 768) {
-      this.instance.position.set(9, 0, 5.7);
+      // this.instance.position.set(9, 0, 5.7);
     }
+  }
+
+  setControls() {
+    this.controls = new OrbitControls(this.instance, this.canvas);
+    // this.controls.enableDamping = true;
+
+    // this.controls.minDistance = 5;
+    // this.controls.maxDistance = 14;
+    this.controls.enablePan = false;
+
+    // How far you can orbit vertically, upper and lower limits.
+    // Range is 0 to Math.PI radians.
+    // this.controls.minPolarAngle = 0; // radians
+    // this.controls.maxPolarAngle = Math.PI; // radians
+
+    // How far you can orbit horizontally, upper and lower limits.
+    // If set, must be a sub-interval of the interval [ - Math.PI, Math.PI ].
+    // this.controls.minAzimuthAngle = -2; // radians
+    // this.controls.maxAzimuthAngle = 1; // radians
+
+    // Set to true to enable damping (inertia)
+    // If damping is enabled, you must call controls.update() in your animation loop
+    this.controls.enableDamping = true;
+    // this.controls.dampingFactor = 0.025;
+    // console.log(this.controls.dampingFactor);
   }
 
   resize() {
@@ -44,8 +71,7 @@ export default class Camera {
   }
 
   update() {
-    if (this.size.width < 778) {
-    }
+    this.controls.update();
   }
 
   debugActive() {

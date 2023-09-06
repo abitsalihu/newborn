@@ -15,13 +15,23 @@ export default class Animations {
     //?? Parameters animations on main btns clicked
     this.defaultParams = {
       func: () => {
-        gsap.to(this.camera.position, {
-          duration: 2,
-          x: -7.2,
-          y: 3.7,
-          z: 9.435,
-          ease: "power3.inOut",
-        });
+        if (this.size.width < 768) {
+          gsap.to(this.camera.position, {
+            duration: 2,
+            x: -17.9,
+            y: 9.809,
+            z: 13.967,
+            ease: "power3.inOut",
+          });
+        } else {
+          gsap.to(this.camera.position, {
+            duration: 2,
+            x: -7.2,
+            y: 3.7,
+            z: 9.435,
+            ease: "power3.inOut",
+          });
+        }
 
         gsap.to(this.controls.target, {
           duration: 2,
@@ -35,16 +45,12 @@ export default class Animations {
           duration: 2,
           minDistance: 5,
           maxDistance: 18,
+          minPolarAngle: -Math.PI * 0.1,
+          maxPolarAngle: Math.PI / 2,
+          minAzimuthAngle: -2,
+          maxAzimuthAngle: Math.PI * 0.1,
           ease: "power3.inOut",
         });
-
-        setTimeout(() => {
-          this.controls.minPolarAngle = -Math.PI * 0.1; // radians
-          this.controls.maxPolarAngle = Math.PI / 2; // radians
-
-          this.controls.minAzimuthAngle = -2; // radians
-          this.controls.maxAzimuthAngle = Math.PI * 0.1; // radians
-        }, 2100);
       },
     };
     this.eventParams = {
@@ -80,15 +86,11 @@ export default class Animations {
           minDistance: 1,
           maxDistance: 5,
           ease: "power3.inOut",
+          minPolarAngle: Math.PI / 3,
+          maxPolarAngle: Math.PI / 1.5,
+          minAzimuthAngle: -Math.PI / 6.5,
+          maxAzimuthAngle: Math.PI / 4,
         });
-        setTimeout(() => {
-          // this.controls.enableRotate = false;
-          this.controls.minPolarAngle = Math.PI / 3; // radians
-          this.controls.maxPolarAngle = Math.PI / 1.5; // radians
-
-          this.controls.minAzimuthAngle = -Math.PI / 6.5; // radians
-          this.controls.maxAzimuthAngle = Math.PI / 4; // radians
-        }, 2100);
       },
     };
 
@@ -139,14 +141,14 @@ export default class Animations {
             ease: "power3.inOut",
           });
         }
-
-        setTimeout(() => {
-          this.controls.minPolarAngle = Math.PI / 3.25; // radians
-          this.controls.maxPolarAngle = Math.PI / 1.75; // radians
-
-          this.controls.minAzimuthAngle = -Math.PI / 6.5; // radians
-          this.controls.maxAzimuthAngle = Math.PI / 6.5; // radians
-        }, 2100);
+        gsap.to(this.controls, {
+          duration: 2,
+          ease: "power3.inOut",
+          minPolarAngle: Math.PI / 3.25,
+          maxPolarAngle: Math.PI / 1.75,
+          minAzimuthAngle: -Math.PI / 6.5,
+          maxAzimuthAngle: Math.PI / 6.5,
+        });
       },
     };
 
@@ -155,56 +157,58 @@ export default class Animations {
         if (this.size.width < 768) {
           gsap.to(this.camera.position, {
             duration: 2,
-            x: 1,
-            y: 2.5,
-            z: 0.25,
+            x: -8.301,
+            y: -1.5,
+            z: -2.144,
             ease: "power3.inOut",
           });
 
           gsap.to(this.controls.target, {
             duration: 2,
-            x: 1.148,
-            y: 2.39,
-            z: -1.464,
+            x: 1.548,
+            y: 2,
+            z: -2.464,
             ease: "power3.inOut",
           });
+
           gsap.to(this.controls, {
             duration: 2,
-            minDistance: 0,
-            maxDistance: 3,
+            minDistance: 7,
+            maxDistance: 12,
+            minPolarAngle: Math.PI / 2.5,
+            maxPolarAngle: Math.PI / 1.9,
+            minAzimuthAngle: -Math.PI / 1.75,
+            maxAzimuthAngle: -Math.PI / 3.25,
             ease: "power3.inOut",
           });
         } else {
           gsap.to(this.camera.position, {
             duration: 2,
-            x: 2.6,
-            y: 2,
-            z: 3.294,
+            x: -9.003,
+            y: -2.857,
+            z: -1.628,
             ease: "power3.inOut",
           });
 
           gsap.to(this.controls.target, {
             duration: 2,
             x: -0.732,
-            y: 1.91,
+            y: 1.3,
             z: -1.5,
             ease: "power3.inOut",
           });
+
           gsap.to(this.controls, {
             duration: 2,
             minDistance: 0,
-            maxDistance: 5,
+            maxDistance: 16,
+            minPolarAngle: Math.PI / 2.5,
+            maxPolarAngle: Math.PI / 1.9,
+            minAzimuthAngle: -Math.PI / 1.5,
+            maxAzimuthAngle: -Math.PI / 3,
             ease: "power3.inOut",
           });
         }
-
-        setTimeout(() => {
-          this.controls.minPolarAngle = Math.PI / 3.25; // radians
-          this.controls.maxPolarAngle = Math.PI / 1.75; // radians
-
-          this.controls.minAzimuthAngle = -Math.PI / 6.5; // radians
-          this.controls.maxAzimuthAngle = Math.PI / 6.5; // radians
-        }, 2100);
       },
     };
 

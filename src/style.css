@@ -382,12 +382,10 @@ body {
 @keyframes bg {
   0% {
     transform: translateY(0%);
-    /* display: flex; */
   }
 
   100% {
     transform: translateY(-100%);
-    /* display: none; */
   }
 }
 

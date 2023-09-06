@@ -9,16 +9,16 @@ export default class World {
     this.size = this.experience.size;
     this.renderer = this.experience.renderer;
     this.sceneReady = this.experience.resources.sceneReady;
-    this.body = document.querySelector("body");
+    // this.body = document.querySelector("body");
 
-    this.clock = new THREE.Clock();
-    this.previousTime = 0;
-    this.parallax = this.experience.parallax;
+    // this.clock = new THREE.Clock();
+    // this.previousTime = 0;
+    // this.parallax = this.experience.parallax;
 
     this.scene = this.experience.scene;
     this.sizes = this.experience.size;
     this.resources = this.experience.resources;
-    this.camera = this.experience.camera;
+    // this.camera = this.experience.camera;
     this.controls = this.experience.camera.controls;
 
     this.setUpScene();
@@ -77,8 +77,6 @@ export default class World {
       this.newBorn.scene.position.set(0, -0.1, 0);
 
       this.scene.add(this.newBorn.scene);
-      // console.log(this.newBorn.scene.children[1].position.clone());
-
       this.controls.target = this.newBorn.scene.children[9].position.clone();
 
       //! -------------------------------

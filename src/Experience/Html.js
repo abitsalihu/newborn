@@ -84,12 +84,12 @@ export default class HTML {
       <div class="btn home">HOME</div>
       <div class="btn events">EVENTS</div>
       <div class="btn menu">MENU</div>
-      <div class="btn explore">EXPLORE</div>
+      <div class="btn explore">GAMES</div>
       `;
     this.body.appendChild(this.btnCon);
     this.btnCon.innerHTML += this.btnHtml;
 
-    this.orbitControlsDisabled = false;
+    // this.orbitControlsDisabled = false;
 
     //? Menu active BTNS
     this.menuBtns = document.createElement("div");
@@ -334,8 +334,8 @@ export default class HTML {
       this.defaultParams = this.experience.animations.defaultParams;
 
       this.menuParams = this.experience.animations.menuParams;
-
       this.eventParams = this.experience.animations.eventParams;
+      this.gamesParams = this.experience.animations.gamesParams;
 
       this.firstPage = this.experience.animations.firstPage;
       this.secondPage = this.experience.animations.secondPage;
@@ -434,6 +434,7 @@ export default class HTML {
           // document.querySelector(".events").style.display = "none";
           // document.querySelector(".menu").style.display = "none";
           document.querySelector(".home").style.display = "inline-block";
+          this.gamesParams.func();
         }
       });
 

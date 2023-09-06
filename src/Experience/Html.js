@@ -343,34 +343,7 @@ export default class HTML {
       this.fourthPage = this.experience.animations.fourthPage;
       this.fifthPage = this.experience.animations.fifthPage;
 
-      this.orbitControlsParams = {
-        func: () => {
-          this.orbitControlsEnabled = true;
-
-          this.controls = new OrbitControls(this.camera.instance, this.canvas);
-          this.controls.enableDamping = true;
-
-          // this.controls.maxDistance = 20;
-          // this.controls.minDistance = 10;
-
-          //? limit side movement
-          // this.controls.maxAzimuthAngle = 2;
-          // this.controls.minAzimuthAngle = 0;
-
-          // this.controls.maxPolarAngle = Math.PI / 2; // Limit angle of visibility
-          // this.controls.target = this.newBorn.scene.position;
-
-          // this.orbitControlsDisabled = false;
-          // this.newBorn.scene.scale.set(1, 1, 1);
-
-          if (this.size.width < 768) {
-            // this.newBorn.scene.scale.set(0.7, 0.7, 0.7);
-          }
-        },
-      };
       if (window.location.hash === "#home") {
-        // this.defaultParams.func();
-
         document.querySelector(".home").style.display = "none";
 
         document.querySelector(".menu").style.display = "inline-block";
@@ -455,28 +428,17 @@ export default class HTML {
           if (window.location.hash === "#home") {
             this.defaultParams.func();
           }
-
-          console.log(this.camera.instance.position);
-          if (this.orbitControlsEnabled) {
-            this.btnCon.style.display = "none";
-            this.orbitControlsEnabled = false;
-            this.controls.enabled = false;
-            this.orbitControlsDisabled = true;
-            window.location.reload();
-          }
         }
         if (e.target.classList.contains("explore")) {
           e.target.style.display = "none";
-          document.querySelector(".events").style.display = "none";
-          document.querySelector(".menu").style.display = "none";
+          // document.querySelector(".events").style.display = "none";
+          // document.querySelector(".menu").style.display = "none";
           document.querySelector(".home").style.display = "inline-block";
-          this.orbitControlsParams.func();
         }
       });
-      this.menuBtns.addEventListener("click", (e) => {
-        // this.previous = this.menuBtns.firstElementChild;
-        // this.next = this.menuBtns.lastElementChild;
 
+      //! PHONE MENU NAVIGATION!
+      this.menuBtns.addEventListener("click", (e) => {
         if (e.target.classList.contains("previous")) {
           if (this.currPage > 1) {
             this.currPage--;
@@ -522,9 +484,5 @@ export default class HTML {
     });
   }
 
-  update() {
-    if (this.orbitControlsEnabled) {
-      // this.controls.update();
-    }
-  }
+  update() {}
 }

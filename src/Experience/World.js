@@ -21,106 +21,11 @@ export default class World {
     this.camera = this.experience.camera;
     this.controls = this.experience.camera.controls;
 
-    //? particles
-
     this.setUpScene();
   }
 
   setUpScene() {
     this.resources.on("resourcesReady", () => {
-      //? environment texture
-      this.envTexture = this.experience.resources.items.envTexture;
-      this.envTexture.colorSpace = THREE.SRGBColorSpace;
-      this.envTexture.exposure = 10;
-      this.scene.environment = this.envTexture;
-      // this.scene.background = this.envTexture;
-
-      //? BAKED texture
-      //! first baked texture
-
-      // this.firstTexture = this.resources.items.bakedScene;
-
-      // this.firstTexture.flipY = false;
-      // this.firstTexture.colorSpace = THREE.SRGBColorSpace;
-
-      // //! second baked texture
-      // this.secondTexture = this.resources.items.backSceneBaked;
-
-      // this.secondTexture.flipY = false;
-      // this.secondTexture.colorSpace = THREE.SRGBColorSpace;
-
-      // //! third baked texture
-      // this.thirdTexture = this.resources.items.thirdTexture;
-
-      // this.thirdTexture.flipY = false;
-      // this.thirdTexture.colorSpace = THREE.SRGBColorSpace;
-
-      // //! fourth baked texture
-      // this.writtenTexture = this.resources.items.writtenTexture;
-
-      // this.writtenTexture.flipY = false;
-      // this.writtenTexture.colorSpace = THREE.SRGBColorSpace;
-
-      // //! fifth baked texture
-      // this.fifthTexture = this.resources.items.fourthTexture;
-
-      // this.fifthTexture.flipY = false;
-      // this.fifthTexture.colorSpace = THREE.SRGBColorSpace;
-
-      // //! fifth baked texture
-      // this.sixthTexture = this.resources.items.sixthTexture;
-
-      // this.sixthTexture.flipY = false;
-      // this.sixthTexture.colorSpace = THREE.SRGBColorSpace;
-
-      // //? scenes
-      // this.newBorn = this.resources.items.newBorn;
-
-      // this.newBorn.scene.traverse((child) => {
-      //   child.material = new THREE.MeshBasicMaterial({
-      //     color: "#f5f5f5",
-      //   });
-
-      //   if (child.name.startsWith("firstTexture")) {
-      //     child.material = new THREE.MeshBasicMaterial({
-      //       map: this.firstTexture,
-      //     });
-      //   }
-
-      //   if (child.name.startsWith("secondScene")) {
-      //     child.material = new THREE.MeshBasicMaterial({
-      //       map: this.secondTexture,
-      //     });
-      //   }
-      //   if (child.name.startsWith("thirdTexture")) {
-      //     child.material = new THREE.MeshBasicMaterial({
-      //       map: this.thirdTexture,
-      //     });
-      //   }
-
-      //   if (child.name.startsWith("writtenTexture")) {
-      //     child.material = new THREE.MeshBasicMaterial({
-      //       map: this.writtenTexture,
-      //     });
-      //   }
-
-      //   if (child.name.startsWith("fourthTexture")) {
-      //     child.material = new THREE.MeshBasicMaterial({
-      //       map: this.fifthTexture,
-      //     });
-      //   }
-
-      //   if (child.name.startsWith("sixthTexture")) {
-      //     child.material = new THREE.MeshBasicMaterial({
-      //       map: this.sixthTexture,
-      //     });
-      //   }
-      // });
-
-      //! -----------------
-      //! new SCENE TRYOUT
-      //! -----------------
-
       //? textures
 
       this.firstTexture = this.resources.items.bakedFirstTexture;
@@ -142,17 +47,17 @@ export default class World {
       //? 3D MODELS
 
       this.newBorn = this.resources.items.newBorn;
-      this.glassObjects = this.resources.items.glassObjects;
-      // this.boardGamesModels = this.resources.items.boardGamesModels;
+      this.menu = this.resources.items.menu;
 
       this.newBorn.scene.traverse((child) => {
-        // console.log(child);
+        if (child.name === "events") {
+        }
         child.material = new THREE.MeshBasicMaterial({
-          map: this.boardGamesTexture,
+          map: this.bakedMenuTexture,
         });
-        if (child.name === "menu_textures") {
+        if (child.name === "board_games") {
           child.material = new THREE.MeshBasicMaterial({
-            map: this.bakedMenuTexture,
+            map: this.boardGamesTexture,
           });
         }
 
@@ -169,74 +74,22 @@ export default class World {
         }
       });
 
-      // this.glassObjects.scene.traverse((child) => {
-      //   console.log(child);
-      //   child.material = new THREE.MeshPhysicalMaterial({
-      //     color: "#f5f5f5",
-      //     transmission: 1,
-      //     metalness: 1,
-      //     roughness: 0,
-      //     ior: 1.5,
-      //     opacity: 0.2,
-      //     thickness: 1.5,
-      //     attenuationColor: "#ffffff",
-      //     attenuationDistance: 0.12,
-      //     specularIntensity: 1,
-      //     specularColor: "#ffffff",
-      //     envMap: this.envTexture,
-      //     envMapIntensity: 0.1,
-      //   });
-      // });
-
-      // this.light = new THREE.AmbientLight(0x404040);
-      // this.light.position.set(0, 0, 3);
-
-      // console.log(this.light);
-
-      // this.directionalLight = new THREE.DirectionalLight(10, 0x404040);
-
-      // this.scene.add(this.light);
-      // console.log(this.glassObjects.scene.children[0]);
-      // this.secondSceneModel.scene.children[0].material =
-      //   new THREE.MeshBasicMaterial({ map: this.secondTexture });
-
-      // this.boardGamesModels.scene.children[0].material =
-      //   new THREE.MeshBasicMaterial({ map: this.boardGamesTexture });
-
-      // this.newBorn.scene.rotation.y = Math.PI * 0.5;
-      // this.newBorn.scene.scale.set(4, 4, 4);
       this.newBorn.scene.position.set(0, -0.1, 0);
-      // this.newBorn.scene.rotation.y = Math.PI * 0.25;
 
       this.scene.add(this.newBorn.scene);
-      console.log(this.newBorn.scene.children[3].position);
-      this.controls.target = this.newBorn.scene.children[3].position;
-      // this.controls.autoRotate = true;
-      // this.controls.autoRotateSpeed = 5;
+      // console.log(this.newBorn.scene.children[1].position.clone());
+
+      this.controls.target = this.newBorn.scene.children[9].position.clone();
 
       //! -------------------------------
-      //! END OF NEW SCENE TRYOUT
+      //! END OF NEW SCENE
       //! -------------------------------
-
-      //? newbORN SCENE PARAMS
-
-      //* if the user is in a smaller device
-      if (this.size.width < 778) {
-      }
-      // this.scene.add(this.newBorn.scene);
-
-      if (this.debug.active) {
-        // this.debugActive();
-      }
     });
   }
 
   update() {}
 
   debugActive() {
-    console.log(this.newBorn);
-    console.log(this.newBorn.scale);
-
     if (this.newBorn) {
       this.scaleChange = {
         scale: 0,

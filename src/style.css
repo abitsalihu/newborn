@@ -10,14 +10,12 @@ body,
 html {
   font-size: 62.5%;
   font-family: "Montserrat", sans-serif;
-  /* overflow: hidden; */
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
 body {
   width: 100vw;
-  min-height: 100vh;
 
   display: flex;
 }
@@ -38,8 +36,6 @@ body {
   justify-content: center;
   align-items: center;
   opacity: 1;
-  /* display: none; */
-  /* animation: bg 2s ease forwards; */
 }
 .animate-bg {
   animation: bg 2s ease forwards;
@@ -141,7 +137,7 @@ body {
 .menu-btns {
   position: absolute;
 
-  bottom: 10px;
+  bottom: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -326,7 +322,7 @@ body {
   font-size: 2.2rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  bottom: 50px;
+  bottom: 10px;
   color: #31302d;
   cursor: pointer;
   display: none;
@@ -335,16 +331,6 @@ body {
   margin: 10px 15px;
   pointer-events: all;
 }
-
-/* .signUp a,
-.signUp a:active {
-  text-decoration: none;
-  color: #ffd95a;
-  background: #1e1e1e;
-  padding: 10px 17.5px;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.5) 1.95px 1.95px 2.6px;
-} */
 
 .signUp_link,
 .signUp_link:active {
@@ -364,6 +350,7 @@ body {
   background: #ffd95a;
   color: #1e1e1e;
 }
+
 /*! animations / */
 
 @keyframes spinnerShow {

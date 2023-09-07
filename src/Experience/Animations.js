@@ -165,16 +165,18 @@ export default class Animations {
 
           gsap.to(this.controls.target, {
             duration: 2,
-            x: 1.548,
-            y: 2,
-            z: -2.464,
+
+            x: -2.18,
+            y: 1.361,
+            z: -1.74,
+
             ease: "power3.inOut",
           });
 
           gsap.to(this.controls, {
             duration: 2,
-            minDistance: 7,
-            maxDistance: 12,
+            minDistance: 4,
+            maxDistance: 10,
             minPolarAngle: Math.PI / 2.5,
             maxPolarAngle: Math.PI / 1.9,
             minAzimuthAngle: -Math.PI / 1.75,
@@ -192,16 +194,16 @@ export default class Animations {
 
           gsap.to(this.controls.target, {
             duration: 2,
-            x: -0.732,
-            y: 1.3,
-            z: -1.5,
+            x: -2.18,
+            y: 1.361,
+            z: -1.74,
             ease: "power3.inOut",
           });
 
           gsap.to(this.controls, {
             duration: 2,
-            minDistance: 0,
-            maxDistance: 16,
+            minDistance: 4,
+            maxDistance: 10,
             minPolarAngle: Math.PI / 2.5,
             maxPolarAngle: Math.PI / 1.9,
             minAzimuthAngle: -Math.PI / 1.5,

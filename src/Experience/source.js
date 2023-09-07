@@ -2,7 +2,7 @@ export default [
   {
     name: "newBorn",
     type: "gltfLoader",
-    path: "/models/newBornSimplified2.glb",
+    path: "/models/newBornBrew.glb",
   },
 
   //? TEXTURES

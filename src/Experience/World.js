@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import Experience from "./Experience";
-import { gsap } from "gsap";
 
 export default class World {
   constructor() {
@@ -9,16 +8,10 @@ export default class World {
     this.size = this.experience.size;
     this.renderer = this.experience.renderer;
     this.sceneReady = this.experience.resources.sceneReady;
-    // this.body = document.querySelector("body");
-
-    // this.clock = new THREE.Clock();
-    // this.previousTime = 0;
-    // this.parallax = this.experience.parallax;
 
     this.scene = this.experience.scene;
     this.sizes = this.experience.size;
     this.resources = this.experience.resources;
-    // this.camera = this.experience.camera;
     this.controls = this.experience.camera.controls;
 
     this.setUpScene();
@@ -93,7 +86,6 @@ export default class World {
         scale: 0,
       };
       this.guiScene = this.debug.gui.addFolder("Scene");
-      // this.debug.gui.addFolder(this.guiScene);
       this.guiScene
         .add(this.newBorn.scene.position, "x")
         .min(-10)

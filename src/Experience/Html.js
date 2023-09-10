@@ -30,7 +30,6 @@ export default class HTML {
           <span class="fPage__item--price">${event.start} </span>
           </div>
         `;
-          console.log(this.fEvent);
 
           if (event.secondEvent) {
             this.sEvent = document.createElement("div");

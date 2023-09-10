@@ -5,6 +5,12 @@ export default [
     path: "/models/newBornBrew.glb",
   },
 
+  {
+    name: "coffeeSteam",
+    type: "gltfLoader",
+    path: "/models/coffeeSteamModel.glb",
+  },
+
   //? TEXTURES
 
   {

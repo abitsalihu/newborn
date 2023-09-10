@@ -7,7 +7,6 @@ export default class Resources extends EventEmitter {
   constructor(source) {
     super();
 
-    console.log(DRACOLoader);
     this.source = source;
 
     this.items = [];

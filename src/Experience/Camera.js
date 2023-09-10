@@ -53,7 +53,6 @@ export default class Camera {
     this.controls.minAzimuthAngle = -2;
     this.controls.maxAzimuthAngle = Math.PI * 0.1;
 
-    // this.controls.enablePan = false;
     this.controls.enableDamping = true;
   }
 

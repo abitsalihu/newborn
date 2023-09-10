@@ -15,6 +15,8 @@ export default class Animations {
     //?? Parameters animations on main btns clicked
     this.defaultParams = {
       func: () => {
+        this.controls.enablePan = true;
+
         if (this.size.width < 768) {
           gsap.to(this.camera.position, {
             duration: 2,
@@ -55,6 +57,8 @@ export default class Animations {
     };
     this.eventParams = {
       func: () => {
+        this.controls.enablePan = false;
+
         if (this.size.width < 768) {
           gsap.to(this.camera.position, {
             duration: 2,
@@ -96,6 +100,8 @@ export default class Animations {
 
     this.menuParams = {
       func: () => {
+        this.controls.enablePan = false;
+
         if (this.size.width < 768) {
           gsap.to(this.camera.position, {
             duration: 2,
@@ -154,6 +160,7 @@ export default class Animations {
 
     this.gamesParams = {
       func: () => {
+        this.controls.enablePan = false;
         if (this.size.width < 768) {
           gsap.to(this.camera.position, {
             duration: 2,

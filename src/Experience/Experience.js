@@ -64,8 +64,8 @@ export default class Experience {
     this.resources.update();
     this.world.update();
     this.parallax.update();
-    this.debug.stats.end();
     this.animations.update();
     this.html.update();
+    this.debug.stats.end();
   }
 }

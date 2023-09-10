@@ -1,18 +1,39 @@
 import * as THREE from "three";
 import Experience from "./Experience";
+import fragmentShader from "../shaders/coffeeSteam/coffee-steam-fragment.glsl";
+import vertexShader from "../shaders/coffeeSteam/coffee-steam-vertex.glsl";
 
 export default class World {
   constructor() {
     this.experience = new Experience();
+
     this.debug = this.experience.debug;
     this.size = this.experience.size;
-    this.renderer = this.experience.renderer;
+    this.time = this.experience.time;
     this.sceneReady = this.experience.resources.sceneReady;
 
     this.scene = this.experience.scene;
     this.sizes = this.experience.size;
     this.resources = this.experience.resources;
     this.controls = this.experience.camera.controls;
+
+    this.model = {};
+
+    this.model.color = "#EFE1D1";
+
+    // Material
+    this.model.material = new THREE.ShaderMaterial({
+      transparent: true,
+      depthWrite: false,
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        uTime: { value: 0 },
+        uTimeFrequency: { value: 0.0004 },
+        uUvFrequency: { value: new THREE.Vector2(4, 5) },
+        uColor: { value: new THREE.Color(this.model.color) },
+      },
+    });
 
     this.setUpScene();
   }
@@ -40,7 +61,7 @@ export default class World {
       //? 3D MODELS
 
       this.newBorn = this.resources.items.newBorn;
-      this.menu = this.resources.items.menu;
+      this.coffeeSteam = this.resources.items.coffeeSteam;
 
       this.newBorn.scene.traverse((child) => {
         if (child.name === "events") {
@@ -67,59 +88,82 @@ export default class World {
         }
       });
 
-      this.newBorn.scene.position.set(0, -0.1, 0);
+      this.coffeeSteam.scene.children[0].material = this.model.material;
 
-      this.scene.add(this.newBorn.scene);
+      // this.newBorn.scene.position.set(0, -0.1, 0);
+      // this.coffeeSteam.scene.rotation.x = Math.PI;
+      this.scene.add(this.newBorn.scene, this.coffeeSteam.scene);
       this.controls.target = this.newBorn.scene.children[9].position.clone();
 
       //! -------------------------------
       //! END OF NEW SCENE
       //! -------------------------------
+
+      //? debug
+
+      // this.debugActive();
     });
   }
 
-  update() {}
+  update() {
+    this.model.material.uniforms.uTime.value = this.time.elapsed;
+  }
 
   debugActive() {
-    if (this.newBorn) {
-      this.scaleChange = {
-        scale: 0,
-      };
-      this.guiScene = this.debug.gui.addFolder("Scene");
-      this.guiScene
-        .add(this.newBorn.scene.position, "x")
-        .min(-10)
-        .max(10)
-        .step(0.001)
-        .name("sceneX");
+    console.log(this.coffeeSteam.scene.children[0].material.uniforms);
+    this.shaderGui = this.debug.gui.addFolder("Shader");
+    this.shaderGui
+      .add(this.model.material.uniforms.uUvFrequency.value, "x")
+      .min(-10)
+      .max(10)
+      .step(0.001);
 
-      this.guiScene
-        .add(this.newBorn.scene.position, "y")
-        .min(-10)
-        .max(10)
-        .step(0.001)
-        .name("sceneX");
+    this.shaderGui
+      .add(this.model.material.uniforms.uUvFrequency.value, "y")
+      .min(-10)
+      .max(10)
+      .step(0.001);
 
-      this.guiScene
-        .add(this.newBorn.scene.position, "z")
-        .min(-10)
-        .max(10)
-        .step(0.001)
-        .name("sceneX");
+    //!-------------
+    // if (this.newBorn) {
+    //   this.scaleChange = {
+    //     scale: 0,
+    //   };
+    //   this.guiScene = this.debug.gui.addFolder("Scene");
+    //   this.guiScene
+    //     .add(this.newBorn.scene.position, "x")
+    //     .min(-10)
+    //     .max(10)
+    //     .step(0.001)
+    //     .name("sceneX");
 
-      this.guiScene
-        .add(this.scaleChange, "scale")
-        .min(0)
-        .max(10)
-        .step(0.01)
-        .name("sceneScaleX")
-        .onFinishChange(() => {
-          this.newBorn.scene.scale.set(
-            this.scaleChange.scale,
-            this.scaleChange.scale,
-            this.scaleChange.scale
-          );
-        });
-    }
+    //   this.guiScene
+    //     .add(this.newBorn.scene.position, "y")
+    //     .min(-10)
+    //     .max(10)
+    //     .step(0.001)
+    //     .name("sceneX");
+
+    //   this.guiScene
+    //     .add(this.newBorn.scene.position, "z")
+    //     .min(-10)
+    //     .max(10)
+    //     .step(0.001)
+    //     .name("sceneX");
+
+    //   this.guiScene
+    //     .add(this.scaleChange, "scale")
+    //     .min(0)
+    //     .max(10)
+    //     .step(0.01)
+    //     .name("sceneScaleX")
+    //     .onFinishChange(() => {
+    //       this.newBorn.scene.scale.set(
+    //         this.scaleChange.scale,
+    //         this.scaleChange.scale,
+    //         this.scaleChange.scale
+    //       );
+    //     });
+    // }
   }
 }

@@ -296,34 +296,32 @@ export default class HTML {
 
     this.currPage = 1;
 
-    setTimeout(() => {
-      if (!this.sceneReady) {
-        this.btnCon.remove();
-        this.menuBtns.remove();
-        document.querySelector(".web-gl").remove();
-        this.body.appendChild(this.simpleWebsite);
-        this.eventCon = document.querySelector(".eventContent");
-        if (this.fEvent) {
-          this.eventCon.appendChild(this.fEvent);
-        }
-        if (this.sEvent) {
-          this.eventCon.appendChild(this.sEvent);
-        }
+    // setTimeout(() => {
+    //   if (!this.sceneReady) {
+    //     this.btnCon.remove();
+    //     this.menuBtns.remove();
+    //     document.querySelector(".web-gl").remove();
+    //     this.body.appendChild(this.simpleWebsite);
+    //     this.eventCon = document.querySelector(".eventContent");
+    //     if (this.fEvent) {
+    //       this.eventCon.appendChild(this.fEvent);
+    //     }
+    //     if (this.sEvent) {
+    //       this.eventCon.appendChild(this.sEvent);
+    //     }
 
-        if (this.noEvent) {
-          this.eventCon.appendChild(this.noEvent);
-        }
+    //     if (this.noEvent) {
+    //       this.eventCon.appendChild(this.noEvent);
+    //     }
 
-        setTimeout(() => {
-          this.bg.classList.add("animate-bg");
-        }, 1000);
-      }
-    }, 7000);
+    //     setTimeout(() => {
+    //       this.bg.classList.add("animate-bg");
+    //     }, 1000);
+    //   }
+    // }, 7000);
 
     this.resources.on("resourcesReady", () => {
       this.sceneReady = true;
-
-      // this.newBorn = this.experience.world.newBorn;
 
       this.writtenObjects = this.experience.world.writtenObjects;
 

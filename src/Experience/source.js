@@ -21,7 +21,7 @@ export default [
   {
     name: "bakedMenuTexture",
     type: "textureLoader",
-    path: "/textures/menu_textures_baked.webp",
+    path: "/textures/menu_november_textures_baked.webp",
   },
 
   {

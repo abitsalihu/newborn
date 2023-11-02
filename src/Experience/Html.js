@@ -45,7 +45,6 @@ export default class HTML {
           <span class="fPage__item--price">${event.secondEventStart} </span>
             </div>
             `;
-            console.log(this.sEvent);
           }
         } else {
           this.noEvent = document.createElement("div");
@@ -57,7 +56,6 @@ export default class HTML {
       }
     }
     //? FINISH LOOP
-    // console.log(this.todaysDate, this.todaysHour);
 
     //! html
 
@@ -386,7 +384,6 @@ export default class HTML {
         if (e.target.classList.contains("menu")) {
           window.location.hash = "#menu";
           e.target.style.display = "none";
-
           document.querySelector(".home").style.display = "inline-block";
           document.querySelector(".events").style.display = "inline-block";
           document.querySelector(".explore").style.display = "none";
@@ -448,7 +445,6 @@ export default class HTML {
             }
             if (this.currPage === 2) {
               this.secondPage.func();
-              console.log(this.currPage);
             }
             if (this.currPage === 3) {
               this.thirdPage.func();

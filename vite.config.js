@@ -14,10 +14,7 @@ export default {
   build: {
     outDir: "../dist",
     emptyOutDir: true,
-    sourcemap: true,
-  },
-  esbuild: {
-    drop: ["console", "debugger"],
+    sourcemap: false,
   },
 
   plugins: [glsl()],

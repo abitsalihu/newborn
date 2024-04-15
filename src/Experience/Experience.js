@@ -23,7 +23,7 @@ export default class Experience {
 
     instance = this;
 
-    window.experience = this;
+    // window.experience = this;
 
     this.canvas = canvas;
 

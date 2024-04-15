@@ -16,6 +16,9 @@ export default {
     emptyOutDir: true,
     sourcemap: true,
   },
+  esbuild: {
+    drop: ["console", "debugger"],
+  },
 
   plugins: [glsl()],
 };

@@ -425,8 +425,6 @@ export default class HTML {
         }
         if (e.target.classList.contains("explore")) {
           e.target.style.display = "none";
-          // document.querySelector(".events").style.display = "none";
-          // document.querySelector(".menu").style.display = "none";
           document.querySelector(".home").style.display = "inline-block";
           this.gamesParams.func();
         }

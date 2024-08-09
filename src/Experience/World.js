@@ -58,6 +58,10 @@ export default class World {
       this.bakedMenuTexture.flipY = false;
       this.bakedMenuTexture.colorSpace = THREE.SRGBColorSpace;
 
+      this.eventsTexture = this.resources.items.eventsTexture;
+      this.eventsTexture.flipY = false;
+      this.eventsTexture.colorSpace = THREE.SRGBColorSpace;
+
       //? 3D MODELS
 
       this.newBorn = this.resources.items.newBorn;
@@ -84,6 +88,12 @@ export default class World {
         if (child.name === "second_texture") {
           child.material = new THREE.MeshBasicMaterial({
             map: this.secondTexture,
+          });
+        }
+
+        if (child.name === "newEvents") {
+          child.material = new THREE.MeshBasicMaterial({
+            map: this.eventsTexture,
           });
         }
       });

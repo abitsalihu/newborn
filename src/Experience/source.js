@@ -2,7 +2,7 @@ export default [
   {
     name: "newBorn",
     type: "gltfLoader",
-    path: "/models/newBornBrew.glb",
+    path: "/models/newBorn.glb",
   },
 
   {
@@ -34,5 +34,11 @@ export default [
     name: "bakedSecondTexture",
     type: "textureLoader",
     path: "/textures/second_texture_baked.webp",
+  },
+
+  {
+    name: "eventsTexture",
+    type: "textureLoader",
+    path: "/textures/augustEvents.webp",
   },
 ];
